@@ -1,0 +1,2 @@
+Para que o codigo funcione, é necessario instalar manualmente as dependencias do Express
+Basta dar o comando no console: npm install express
