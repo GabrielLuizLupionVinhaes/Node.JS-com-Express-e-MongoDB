@@ -22,5 +22,24 @@ rota.get("/Tarefa", async(req, res) => {
     return res.send(tarefa);
 })
 
+rota.delete("/TarefaDeleta/:id", async(req, res) =>{
+    const tarefa = await Tarefa.findByIdAndUpdate(req.params.id);
+    return res.send(tarefa); 
+})
+
+app.put("/TarefaAtualiza/:id", async(req, res) =>{
+    const tarefa = await Tarefa.findByIdAndUpdate(req.params.id, {
+        id: req.body.id,
+        titulo: req.body.titulo,
+        descricao: req.body.descricao,
+        dataCriacao: req.body.dataCriacao,
+        dataConclusao: req.body.dataConclusao,
+        categoria: req.body.categoria,
+        status: req.body.status,
+        usuarioAssociado: req.body.usuarioAssociado
+    })
+    return res.send(tarefa);
+})
+
 module.exports = rota;
 
