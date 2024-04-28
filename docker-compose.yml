@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  mongo: 
+    image: mongo:latest
+    container_name: mongo_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  app:
+    build:
+    container_name: node_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI="mongodb://localhost:27017/Estudando"
+  volumes:
+  mongo_data:
+
